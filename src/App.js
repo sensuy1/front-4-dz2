@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+export default function App() {
+  const [color1, setColor1] = useState("red")
+  const [color2, setColor2] = useState("blue")
+
+  const Click = () => {
+    setColor1((color1) => (color1 === "red" ? "blue" : "red"))
+    setColor2((color2) => (color2 === "blue" ? "red" : "blue"))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <>
+      <div
+        onClick={Click}
+        style={{ width: 100, height: 100, background: color1, border: "3px solid black", margin: 10 }}
+      ></div>
 
-export default App;
+      <div
+        onClick={Click}
+        style={{ width: 100, height: 100, background: color2, border: "3px solid black", margin: 10 }}
+      ></div>
+    </>
+  )
+}
